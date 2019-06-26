@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Need_For_Speed_Crush
@@ -11,11 +8,10 @@ namespace Need_For_Speed_Crush
     public class MovingObjects
     {
         public List<PictureBox> objects { get; set; }
-
         Random r = new Random();
-
         public MovingObjects()
         {
+
         }
 
         public MovingObjects(List<PictureBox> objects)
@@ -23,19 +19,17 @@ namespace Need_For_Speed_Crush
             this.objects = objects;
         }
 
-
         private Point ValidPosition(Random r, int left, int width, int top)
         {
             Point p = new Point();
-            p.X = r.Next(left + objects[0].Width, left + width - objects[0].Width);
+            p.X = r.Next(left + objects[0].Width, left+ width - objects[0].Width);
             p.Y = top;
             return p;
         }
         public void CreateObject(PictureBox flyingObject,int top)
         {
-            flyingObject.Location = ValidPosition(r, 15, 365, top);
+            flyingObject.Location = ValidPosition(r, 0, 365, top);
         }
-
         public void FuelMove(int speed)
         {
             if (objects[0].Top >= 500){
@@ -46,7 +40,6 @@ namespace Need_For_Speed_Crush
                 objects[0].Top += speed;
             }
         }
-
         public void RefilFuel(MyCar myCar)
         {
             PictureBox fuel = objects[0];
@@ -61,10 +54,8 @@ namespace Need_For_Speed_Crush
                 {
                     myCar.fuel += 20;
                 }
-
             }
         }
-
         public void FixCar(MyCar myCar)
         {
             PictureBox fixCar = objects[0];
@@ -89,7 +80,6 @@ namespace Need_For_Speed_Crush
                 objects[0].Top += speed;
             }
         }
-
         public void CarMove(int speed)
         {
             foreach (PictureBox car in objects)

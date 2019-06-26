@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Need_For_Speed_Crush
 {
@@ -15,16 +10,15 @@ namespace Need_For_Speed_Crush
         public int lives = 3;
 
         public bool invincible = false;
-
         public MyCar()
         {
+
         }
 
         public MyCar(PictureBox position)
         {
             this.position = position;
         }
-
         public void RemoveLive()
         {
             if (invincible == false)
@@ -32,7 +26,6 @@ namespace Need_For_Speed_Crush
                 lives--;
             }    
         }
-
         public void FuelLost()
         {
             if (invincible == false)
@@ -40,7 +33,6 @@ namespace Need_For_Speed_Crush
                 fuel -= 5;
             }
         }
-
         public bool IsTouching(PictureBox enemy)
         {
             if (position.Location.X + position.Width < enemy.Location.X)
@@ -53,7 +45,5 @@ namespace Need_For_Speed_Crush
                 return false;
             return true;
         }
-
-
     }
 }
