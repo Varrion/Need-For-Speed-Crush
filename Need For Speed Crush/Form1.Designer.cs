@@ -54,6 +54,7 @@
             this.StartButton = new System.Windows.Forms.Button();
             this.SpeedLabel = new System.Windows.Forms.Label();
             this.PlayAgain = new System.Windows.Forms.Button();
+            this.fixCar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fixCar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -143,7 +145,7 @@
             // enemy1
             // 
             this.enemy1.Image = ((System.Drawing.Image)(resources.GetObject("enemy1.Image")));
-            this.enemy1.Location = new System.Drawing.Point(31, 141);
+            this.enemy1.Location = new System.Drawing.Point(31, 161);
             this.enemy1.Name = "enemy1";
             this.enemy1.Size = new System.Drawing.Size(31, 57);
             this.enemy1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -153,7 +155,7 @@
             // car
             // 
             this.car.Image = ((System.Drawing.Image)(resources.GetObject("car.Image")));
-            this.car.Location = new System.Drawing.Point(77, 367);
+            this.car.Location = new System.Drawing.Point(83, 382);
             this.car.Name = "car";
             this.car.Size = new System.Drawing.Size(31, 57);
             this.car.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -163,9 +165,9 @@
             // fuel
             // 
             this.fuel.Image = ((System.Drawing.Image)(resources.GetObject("fuel.Image")));
-            this.fuel.Location = new System.Drawing.Point(146, 100);
+            this.fuel.Location = new System.Drawing.Point(132, 100);
             this.fuel.Name = "fuel";
-            this.fuel.Size = new System.Drawing.Size(23, 28);
+            this.fuel.Size = new System.Drawing.Size(33, 28);
             this.fuel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fuel.TabIndex = 13;
             this.fuel.TabStop = false;
@@ -173,7 +175,7 @@
             // enemy2
             // 
             this.enemy2.Image = ((System.Drawing.Image)(resources.GetObject("enemy2.Image")));
-            this.enemy2.Location = new System.Drawing.Point(226, 56);
+            this.enemy2.Location = new System.Drawing.Point(226, 38);
             this.enemy2.Name = "enemy2";
             this.enemy2.Size = new System.Drawing.Size(31, 57);
             this.enemy2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,7 +185,7 @@
             // enemy3
             // 
             this.enemy3.Image = ((System.Drawing.Image)(resources.GetObject("enemy3.Image")));
-            this.enemy3.Location = new System.Drawing.Point(315, 263);
+            this.enemy3.Location = new System.Drawing.Point(335, 280);
             this.enemy3.Name = "enemy3";
             this.enemy3.Size = new System.Drawing.Size(31, 57);
             this.enemy3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -278,7 +280,7 @@
             this.StartButton.TabIndex = 22;
             this.StartButton.Text = "Start Driving";
             this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.Button1_Click);
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             this.StartButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StartButton_KeyDown);
             // 
             // SpeedLabel
@@ -294,13 +296,25 @@
             // 
             // PlayAgain
             // 
-            this.PlayAgain.Location = new System.Drawing.Point(146, 231);
+            this.PlayAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayAgain.Location = new System.Drawing.Point(146, 235);
             this.PlayAgain.Name = "PlayAgain";
-            this.PlayAgain.Size = new System.Drawing.Size(75, 23);
+            this.PlayAgain.Size = new System.Drawing.Size(92, 34);
             this.PlayAgain.TabIndex = 24;
-            this.PlayAgain.Text = "Menu";
+            this.PlayAgain.Text = "Play Again";
             this.PlayAgain.UseVisualStyleBackColor = true;
             this.PlayAgain.Click += new System.EventHandler(this.PlayAgain_Click);
+            this.PlayAgain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayAgain_KeyDown);
+            // 
+            // fixCar
+            // 
+            this.fixCar.Image = ((System.Drawing.Image)(resources.GetObject("fixCar.Image")));
+            this.fixCar.Location = new System.Drawing.Point(83, 67);
+            this.fixCar.Name = "fixCar";
+            this.fixCar.Size = new System.Drawing.Size(34, 28);
+            this.fixCar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fixCar.TabIndex = 25;
+            this.fixCar.TabStop = false;
             // 
             // Form1
             // 
@@ -308,6 +322,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.fixCar);
             this.Controls.Add(this.PlayAgain);
             this.Controls.Add(this.SpeedLabel);
             this.Controls.Add(this.StartButton);
@@ -349,6 +364,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fixCar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,6 +396,7 @@
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Label SpeedLabel;
         private System.Windows.Forms.Button PlayAgain;
+        private System.Windows.Forms.PictureBox fixCar;
     }
 }
 

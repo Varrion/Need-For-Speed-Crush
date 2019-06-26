@@ -20,10 +20,12 @@ namespace Need_For_Speed_Crush
         bool startFlag = false;
         MovingObjects enemyCars;
         MovingObjects fuelObject;
+        MovingObjects fixCarObject;
         MyCar myCar;
         List<PictureBox> enemies = new List<PictureBox>();
         List<PictureBox> middleLines = new List<PictureBox>();
         List<PictureBox> fuels = new List<PictureBox>();
+        List<PictureBox> fixingList = new List<PictureBox>();
         SoundPlayer soundPlayer = new SoundPlayer(Resource1.soundtrack);
         public Form1()
         {
@@ -33,6 +35,7 @@ namespace Need_For_Speed_Crush
             myCar = new MyCar(car);
             enemyCars = new MovingObjects(enemies);
             fuelObject = new MovingObjects(fuels);
+            fixCarObject = new MovingObjects(fixingList);
 
             gameOver.Visible = false;
             scoreLabel.Visible = false;
@@ -50,36 +53,55 @@ namespace Need_For_Speed_Crush
             middleLines.Add(pictureBox3);
             middleLines.Add(pictureBox4);
             middleLines.Add(pictureBox5);
+            fixingList.Add(fixCar);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             soundPlayer.PlayLooping();
+            fixCarObject.CreateObject(fixCar, -2500);
+            fuelObject.CreateObject(fuel, -600);
             PlayAgain.Visible = false;
             fuelLabel.Text = "Fuel Level: " + myCar.fuel.ToString();
             SpeedLabel.Text = "Speed: "+  gamespeed.ToString();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
 
         void checkGame()
         {
-            if (myCar.lives == 2)
+            if(myCar.lives == 3)
             {
+                heart1.Visible = true;
+                heart2.Visible = true;
+                heart3.Visible = true;
+            }
+
+            else if (myCar.lives == 2)
+            {
+                heart1.Visible = true;
+                heart2.Visible = true;
                 heart3.Visible = false;
             }
             else if (myCar.lives == 1)
             {
+                heart1.Visible = true;
                 heart2.Visible = false;
+                heart3.Visible = false;
             }
 
             if (myCar.lives == 0 || myCar.fuel == 0)
             {
                 timer1.Enabled = false;
                 gameOver.Visible = true;
-                scoreLabel.Text += score;
+                scoreLabel.Text = "Your Score is: " + score;
                 scoreLabel.Visible = true;
-                heart1.Visible = false;
+
+                score = 0;
                 gamespeed = 0;
+
+                heart1.Visible = false;
                 soundPlayer.Stop();
                 PlayAgain.Visible = true;
 
@@ -100,6 +122,25 @@ namespace Need_For_Speed_Crush
                 }
             }
         }
+
+        void PlayAgainFunction()
+        {
+            myCar = new MyCar(car);
+            myCar.invincible = true;
+            gamespeed = 1;
+            gameOver.Visible = false;
+            scoreLabel.Visible = false;
+            timer1.Enabled = true;
+            timer2.Enabled = true;
+            timer3.Enabled = true;
+            PlayAgain.Visible = false;
+            heart1.Visible = true;
+            heart2.Visible = true;
+            heart3.Visible = true;
+            soundPlayer.PlayLooping();
+            fuelObject.CreateObject(fuel, -600);
+            fixCarObject.CreateObject(fixCar, -3000);
+        }
           
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -118,6 +159,8 @@ namespace Need_For_Speed_Crush
                 enemyCars.HeartLost(myCar);
                 fuelObject.FuelMove(gamespeed);
                 fuelObject.RefilFuel(myCar);
+                fixCarObject.FixCarMove(gamespeed);
+                fixCarObject.FixCar(myCar);
                 checkGame();
             }
 
@@ -155,13 +198,6 @@ namespace Need_For_Speed_Crush
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            StartButton.Visible = false;
-            startFlag = true;
-            gamespeed = 1;
-            
-        }
 
 
         void MoveMyCar(KeyEventArgs e)
@@ -205,9 +241,21 @@ namespace Need_For_Speed_Crush
             MoveMyCar(e);
         }
 
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            StartButton.Visible = false;
+            startFlag = true;
+            gamespeed = 1;
+        }
+
         private void PlayAgain_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            PlayAgainFunction();
+        }
+
+        private void PlayAgain_KeyDown(object sender, KeyEventArgs e)
+        {
+            MoveMyCar(e);
         }
     }
 }

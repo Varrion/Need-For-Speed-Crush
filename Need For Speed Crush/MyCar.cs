@@ -10,7 +10,7 @@ namespace Need_For_Speed_Crush
     public class MyCar
     {
         public PictureBox position { get; set; }
-
+        
         public int fuel = 100;
         public int lives = 3;
 

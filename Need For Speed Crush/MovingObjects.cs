@@ -11,7 +11,6 @@ namespace Need_For_Speed_Crush
     public class MovingObjects
     {
         public List<PictureBox> objects { get; set; }
-        int x { get; set; }
 
         Random r = new Random();
 
@@ -25,16 +24,65 @@ namespace Need_For_Speed_Crush
         }
 
 
-        public void CreateObject(PictureBox flyingObject)
+        private Point ValidPosition(Random r, int left, int width, int top)
         {
-                x = r.Next(15, 380-flyingObject.Width);
-                flyingObject.Location = new Point(x, -80);
+            Point p = new Point();
+            p.X = r.Next(left + objects[0].Width, left + width - objects[0].Width);
+            p.Y = top;
+            return p;
+        }
+        public void CreateObject(PictureBox flyingObject,int top)
+        {
+            flyingObject.Location = ValidPosition(r, 15, 365, top);
         }
 
         public void FuelMove(int speed)
         {
             if (objects[0].Top >= 500){
-                CreateObject(objects[0]);
+                CreateObject(objects[0],-600);
+            }
+            else
+            {
+                objects[0].Top += speed;
+            }
+        }
+
+        public void RefilFuel(MyCar myCar)
+        {
+            PictureBox fuel = objects[0];
+            if (myCar.IsTouching(fuel))
+            {
+                CreateObject(fuel,-600);
+                if (myCar.fuel + 25 > 100)
+                {
+                    myCar.fuel = 100;
+                }
+                else
+                {
+                    myCar.fuel += 20;
+                }
+
+            }
+        }
+
+        public void FixCar(MyCar myCar)
+        {
+            PictureBox fixCar = objects[0];
+            if (myCar.IsTouching(fixCar))
+            {
+                CreateObject(fixCar, -3000);
+                if (myCar.lives < 3)
+                {
+                    myCar.lives++;
+                }
+            }
+        }
+
+        public void FixCarMove(int speed)
+        {
+            if (objects[0].Top >= 500)
+            {
+                CreateObject(objects[0], -3000);
             }
             else
             {
@@ -48,7 +96,7 @@ namespace Need_For_Speed_Crush
             {
                 if (car.Top>= 500)
                 {
-                    CreateObject(car);
+                    CreateObject(car,-100);
                 }
                 else
                 {
@@ -74,24 +122,6 @@ namespace Need_For_Speed_Crush
                     }
                 }
             }            
-        }
-
-        public void RefilFuel(MyCar myCar)
-        {   
-            PictureBox fuel = objects[0];
-            if (myCar.IsTouching(fuel))
-            {
-                x = r.Next(15, 380 - fuel.Width);
-                fuel.Location = new Point(x, -800);
-                if (myCar.fuel+25 > 100)
-                {
-                    myCar.fuel = 100;
-                } else
-                {
-                    myCar.fuel += 25;
-                }
-
-            }
         }
     }
 }
