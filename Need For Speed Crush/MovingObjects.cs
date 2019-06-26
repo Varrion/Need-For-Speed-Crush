@@ -12,7 +12,6 @@ namespace Need_For_Speed_Crush
     {
         public List<PictureBox> objects { get; set; }
         int x { get; set; }
-        int y { get; set; }
 
         Random r = new Random();
 
@@ -26,16 +25,16 @@ namespace Need_For_Speed_Crush
         }
 
 
-        public void createObject(PictureBox flyingObject)
+        public void CreateObject(PictureBox flyingObject)
         {
                 x = r.Next(15, 380-flyingObject.Width);
-                flyingObject.Location = new Point(x, 0);
+                flyingObject.Location = new Point(x, -80);
         }
 
-        public void fuelMove(int speed)
+        public void FuelMove(int speed)
         {
             if (objects[0].Top >= 500){
-                createObject(objects[0]);
+                CreateObject(objects[0]);
             }
             else
             {
@@ -43,13 +42,13 @@ namespace Need_For_Speed_Crush
             }
         }
 
-        public void carMove(int speed)
+        public void CarMove(int speed)
         {
             foreach (PictureBox car in objects)
             {
                 if (car.Top>= 500)
                 {
-                    createObject(car);
+                    CreateObject(car);
                 }
                 else
                 {
@@ -83,8 +82,15 @@ namespace Need_For_Speed_Crush
             if (myCar.IsTouching(fuel))
             {
                 x = r.Next(15, 380 - fuel.Width);
-                fuel.Location = new Point(x, -80);
-                myCar.fuel += 20;
+                fuel.Location = new Point(x, -800);
+                if (myCar.fuel+25 > 100)
+                {
+                    myCar.fuel = 100;
+                } else
+                {
+                    myCar.fuel += 25;
+                }
+
             }
         }
     }

@@ -17,6 +17,7 @@ namespace Need_For_Speed_Crush
         int score = 0;
         int seconds = 0;
         int immunityCounter = 0;
+        bool startFlag = false;
         MovingObjects enemyCars;
         MovingObjects fuelObject;
         MyCar myCar;
@@ -54,18 +55,9 @@ namespace Need_For_Speed_Crush
         private void Form1_Load(object sender, EventArgs e)
         {
             soundPlayer.PlayLooping();
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-
-            moveLine(gamespeed);
-            enemyCars.carMove(gamespeed);
-            enemyCars.HeartLost(myCar);
-            fuelObject.fuelMove(gamespeed);
-            fuelObject.RefilFuel(myCar);
-            checkGame();
-            label1.Text = myCar.fuel.ToString();
+            PlayAgain.Visible = false;
+            fuelLabel.Text = "Fuel Level: " + myCar.fuel.ToString();
+            SpeedLabel.Text = "Speed: "+  gamespeed.ToString();
         }
 
 
@@ -87,7 +79,9 @@ namespace Need_For_Speed_Crush
                 scoreLabel.Text += score;
                 scoreLabel.Visible = true;
                 heart1.Visible = false;
+                gamespeed = 0;
                 soundPlayer.Stop();
+                PlayAgain.Visible = true;
 
             }
         }
@@ -109,44 +103,24 @@ namespace Need_For_Speed_Crush
           
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
-            {
-                if (gamespeed != 0)
-                {
-                    if (myCar.position.Left> 10 + pictureBox6.Width)
-                        myCar.position.Left += -20;
-                }
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                if (gamespeed != 0)
-                {
-                    if (myCar.position.Right <= 370 - pictureBox7.Width)
-                        myCar.position.Left += 20;
-                }
-            }
-
-            if (e.KeyCode == Keys.Up)
-            {
-                if (gamespeed < 21)
-                {
-                    gamespeed++;
-                }
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                if (gamespeed > 0)
-                {
-                    gamespeed--;
-                }
-                    
-            }
-
         }
 
         private void Label1_Click(object sender, EventArgs e)
         {
-            label1.Text = myCar.lives.ToString();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (startFlag)
+            {
+                moveLine(gamespeed);
+                enemyCars.CarMove(gamespeed);
+                enemyCars.HeartLost(myCar);
+                fuelObject.FuelMove(gamespeed);
+                fuelObject.RefilFuel(myCar);
+                checkGame();
+            }
+
         }
 
         private void Timer2_Tick(object sender, EventArgs e)
@@ -157,7 +131,11 @@ namespace Need_For_Speed_Crush
             {
                 myCar.FuelLost();
             }
-            
+
+            fuelLabel.Text = "Fuel Level: " + myCar.fuel.ToString();
+            SpeedLabel.Text = "Speed: " + gamespeed.ToString();
+
+
         }
 
         private void Timer3_Tick(object sender, EventArgs e)
@@ -175,6 +153,61 @@ namespace Need_For_Speed_Crush
                     myCar.invincible = false;
                 }
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            StartButton.Visible = false;
+            startFlag = true;
+            gamespeed = 1;
+            
+        }
+
+
+        void MoveMyCar(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                if (gamespeed != 0)
+                {
+                    if (myCar.position.Left > 20 + pictureBox6.Width)
+                        myCar.position.Left += -25;
+                }
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                if (gamespeed != 0)
+                {
+                    if (myCar.position.Right <= 365 - pictureBox7.Width)
+                        myCar.position.Left += 25;
+                }
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                if (gamespeed < 21)
+                {
+                    gamespeed++;
+                }
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                if (gamespeed > 0)
+                {
+                    gamespeed--;
+                }
+
+            }
+        }
+
+        private void StartButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            MoveMyCar(e);
+        }
+
+        private void PlayAgain_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

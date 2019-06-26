@@ -45,12 +45,15 @@
             this.enemy3 = new System.Windows.Forms.PictureBox();
             this.gameOver = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.fuelLabel = new System.Windows.Forms.Label();
             this.heart1 = new System.Windows.Forms.PictureBox();
             this.heart2 = new System.Windows.Forms.PictureBox();
             this.heart3 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.StartButton = new System.Windows.Forms.Button();
+            this.SpeedLabel = new System.Windows.Forms.Label();
+            this.PlayAgain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -98,7 +101,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // pictureBox2
@@ -113,7 +116,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(187, 196);
+            this.pictureBox3.Location = new System.Drawing.Point(187, 198);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(10, 71);
             this.pictureBox3.TabIndex = 8;
@@ -140,9 +143,9 @@
             // enemy1
             // 
             this.enemy1.Image = ((System.Drawing.Image)(resources.GetObject("enemy1.Image")));
-            this.enemy1.Location = new System.Drawing.Point(17, 96);
+            this.enemy1.Location = new System.Drawing.Point(31, 141);
             this.enemy1.Name = "enemy1";
-            this.enemy1.Size = new System.Drawing.Size(34, 75);
+            this.enemy1.Size = new System.Drawing.Size(31, 57);
             this.enemy1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.enemy1.TabIndex = 11;
             this.enemy1.TabStop = false;
@@ -150,9 +153,9 @@
             // car
             // 
             this.car.Image = ((System.Drawing.Image)(resources.GetObject("car.Image")));
-            this.car.Location = new System.Drawing.Point(16, 378);
+            this.car.Location = new System.Drawing.Point(77, 367);
             this.car.Name = "car";
-            this.car.Size = new System.Drawing.Size(35, 71);
+            this.car.Size = new System.Drawing.Size(31, 57);
             this.car.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.car.TabIndex = 12;
             this.car.TabStop = false;
@@ -160,9 +163,9 @@
             // fuel
             // 
             this.fuel.Image = ((System.Drawing.Image)(resources.GetObject("fuel.Image")));
-            this.fuel.Location = new System.Drawing.Point(125, 229);
+            this.fuel.Location = new System.Drawing.Point(146, 100);
             this.fuel.Name = "fuel";
-            this.fuel.Size = new System.Drawing.Size(25, 23);
+            this.fuel.Size = new System.Drawing.Size(23, 28);
             this.fuel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fuel.TabIndex = 13;
             this.fuel.TabStop = false;
@@ -170,9 +173,9 @@
             // enemy2
             // 
             this.enemy2.Image = ((System.Drawing.Image)(resources.GetObject("enemy2.Image")));
-            this.enemy2.Location = new System.Drawing.Point(216, 157);
+            this.enemy2.Location = new System.Drawing.Point(226, 56);
             this.enemy2.Name = "enemy2";
-            this.enemy2.Size = new System.Drawing.Size(34, 75);
+            this.enemy2.Size = new System.Drawing.Size(31, 57);
             this.enemy2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.enemy2.TabIndex = 14;
             this.enemy2.TabStop = false;
@@ -180,9 +183,9 @@
             // enemy3
             // 
             this.enemy3.Image = ((System.Drawing.Image)(resources.GetObject("enemy3.Image")));
-            this.enemy3.Location = new System.Drawing.Point(299, 259);
+            this.enemy3.Location = new System.Drawing.Point(315, 263);
             this.enemy3.Name = "enemy3";
-            this.enemy3.Size = new System.Drawing.Size(34, 75);
+            this.enemy3.Size = new System.Drawing.Size(31, 57);
             this.enemy3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.enemy3.TabIndex = 15;
             this.enemy3.TabStop = false;
@@ -204,22 +207,24 @@
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.scoreLabel.Location = new System.Drawing.Point(106, 196);
+            this.scoreLabel.Location = new System.Drawing.Point(111, 198);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(127, 20);
             this.scoreLabel.TabIndex = 17;
             this.scoreLabel.Text = "Your Score is: ";
             this.scoreLabel.Visible = false;
             // 
-            // label1
+            // fuelLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(331, 449);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
+            this.fuelLabel.AutoSize = true;
+            this.fuelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fuelLabel.ForeColor = System.Drawing.Color.Red;
+            this.fuelLabel.Location = new System.Drawing.Point(14, 442);
+            this.fuelLabel.Name = "fuelLabel";
+            this.fuelLabel.Size = new System.Drawing.Size(88, 16);
+            this.fuelLabel.TabIndex = 18;
+            this.fuelLabel.Text = "Fuel Level: ";
+            this.fuelLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // heart1
             // 
@@ -263,16 +268,53 @@
             this.timer3.Interval = 500;
             this.timer3.Tick += new System.EventHandler(this.Timer3_Tick);
             // 
+            // StartButton
+            // 
+            this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.StartButton.Location = new System.Drawing.Point(132, 177);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(125, 61);
+            this.StartButton.TabIndex = 22;
+            this.StartButton.Text = "Start Driving";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.Button1_Click);
+            this.StartButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StartButton_KeyDown);
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.AutoSize = true;
+            this.SpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpeedLabel.ForeColor = System.Drawing.Color.Red;
+            this.SpeedLabel.Location = new System.Drawing.Point(290, 442);
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(62, 16);
+            this.SpeedLabel.TabIndex = 23;
+            this.SpeedLabel.Text = "Speed: ";
+            // 
+            // PlayAgain
+            // 
+            this.PlayAgain.Location = new System.Drawing.Point(146, 231);
+            this.PlayAgain.Name = "PlayAgain";
+            this.PlayAgain.Size = new System.Drawing.Size(75, 23);
+            this.PlayAgain.TabIndex = 24;
+            this.PlayAgain.Text = "Menu";
+            this.PlayAgain.UseVisualStyleBackColor = true;
+            this.PlayAgain.Click += new System.EventHandler(this.PlayAgain_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.PlayAgain);
+            this.Controls.Add(this.SpeedLabel);
+            this.Controls.Add(this.StartButton);
             this.Controls.Add(this.heart3);
             this.Controls.Add(this.heart2);
             this.Controls.Add(this.heart1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.fuelLabel);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.gameOver);
             this.Controls.Add(this.enemy3);
@@ -287,6 +329,7 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -328,12 +371,15 @@
         private System.Windows.Forms.PictureBox enemy3;
         private System.Windows.Forms.Label gameOver;
         private System.Windows.Forms.Label scoreLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fuelLabel;
         private System.Windows.Forms.PictureBox heart1;
         private System.Windows.Forms.PictureBox heart2;
         private System.Windows.Forms.PictureBox heart3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Label SpeedLabel;
+        private System.Windows.Forms.Button PlayAgain;
     }
 }
 

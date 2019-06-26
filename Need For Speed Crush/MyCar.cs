@@ -13,8 +13,6 @@ namespace Need_For_Speed_Crush
 
         public int fuel = 100;
         public int lives = 3;
-        public int x { get; set; }
-        public int y { get; set; }
 
         public bool invincible = false;
 
@@ -32,15 +30,14 @@ namespace Need_For_Speed_Crush
             if (invincible == false)
             {
                 lives--;
-            }
-            
+            }    
         }
 
         public void FuelLost()
         {
             if (invincible == false)
             {
-                fuel = fuel - 5;
+                fuel -= 5;
             }
         }
 
