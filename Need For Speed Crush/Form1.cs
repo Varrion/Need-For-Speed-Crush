@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,7 @@ namespace Need_For_Speed_Crush
         List<PictureBox> enemies = new List<PictureBox>();
         List<PictureBox> middleLines = new List<PictureBox>();
         List<PictureBox> fuels = new List<PictureBox>();
+        SoundPlayer soundPlayer = new SoundPlayer(Resource1.soundtrack);
         public Form1()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace Need_For_Speed_Crush
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            soundPlayer.PlayLooping();
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -85,6 +87,7 @@ namespace Need_For_Speed_Crush
                 scoreLabel.Text += score;
                 scoreLabel.Visible = true;
                 heart1.Visible = false;
+                soundPlayer.Stop();
 
             }
         }
