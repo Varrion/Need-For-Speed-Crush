@@ -197,7 +197,7 @@
             this.gameOver.AutoSize = true;
             this.gameOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOver.ForeColor = System.Drawing.Color.Red;
-            this.gameOver.Location = new System.Drawing.Point(90, 153);
+            this.gameOver.Location = new System.Drawing.Point(95, 153);
             this.gameOver.Name = "gameOver";
             this.gameOver.Size = new System.Drawing.Size(199, 33);
             this.gameOver.TabIndex = 16;
@@ -273,7 +273,7 @@
             // 
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.StartButton.Location = new System.Drawing.Point(132, 177);
+            this.StartButton.Location = new System.Drawing.Point(130, 162);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(125, 61);
             this.StartButton.TabIndex = 22;
@@ -295,7 +295,7 @@
             // PlayAgain
             // 
             this.PlayAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayAgain.Location = new System.Drawing.Point(146, 189);
+            this.PlayAgain.Location = new System.Drawing.Point(146, 223);
             this.PlayAgain.Name = "PlayAgain";
             this.PlayAgain.Size = new System.Drawing.Size(92, 34);
             this.PlayAgain.TabIndex = 24;
@@ -382,7 +382,7 @@
             this.lblPaused.AutoSize = true;
             this.lblPaused.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaused.ForeColor = System.Drawing.Color.Red;
-            this.lblPaused.Location = new System.Drawing.Point(77, 190);
+            this.lblPaused.Location = new System.Drawing.Point(77, 188);
             this.lblPaused.Name = "lblPaused";
             this.lblPaused.Size = new System.Drawing.Size(237, 33);
             this.lblPaused.TabIndex = 28;
@@ -403,7 +403,7 @@
             // ExitButton
             // 
             this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.Location = new System.Drawing.Point(154, 246);
+            this.ExitButton.Location = new System.Drawing.Point(154, 262);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 23);
             this.ExitButton.TabIndex = 30;
@@ -447,7 +447,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Need For Speed Crush";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

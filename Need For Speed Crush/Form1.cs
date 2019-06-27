@@ -84,6 +84,17 @@ namespace Need_For_Speed_Crush
             PlayAgainFunction();
             tsbtnUnMute.Enabled = false;
             tsbtnMute.Enabled = true;
+
+
+            lblPaused.Visible = false;
+            EnableAllTimers();
+            soundPlayer.Play();
+            pauseBtn.Text = "Pause";
+            this.Focus();
+            ExitButton.Enabled = false;
+            ExitButton.Visible = false;
+
+
             Invalidate(true);
         }
         private void EnableAllTimers() {
@@ -91,7 +102,7 @@ namespace Need_For_Speed_Crush
             timer2.Start();
             timer3.Start();
         }
-        void checkGame()
+        void CheckGame()
         {
             if(myCar.lives == 3)
             {
@@ -122,9 +133,12 @@ namespace Need_For_Speed_Crush
                 heart3.Visible = false;
                 soundPlayer.Stop();
                 PlayAgain.Visible = true;
+                ExitButton.Visible = true;
+                ExitButton.Enabled = true;
+                lblScore.Visible = false;
             }
         }
-        void moveLine(int speed)
+        void MoveLine(int speed)
         {
             foreach(PictureBox line in middleLines)
             {
@@ -146,7 +160,11 @@ namespace Need_For_Speed_Crush
             score = 0;
             scoreLabel.Visible = false;
             EnableAllTimers();
+
             PlayAgain.Visible = false;
+            lblScore.Visible = true;
+            ExitButton.Visible = false;
+            ExitButton.Enabled = false;
             heart1.Visible = true;
             heart2.Visible = true;
             heart3.Visible = true;
@@ -158,14 +176,14 @@ namespace Need_For_Speed_Crush
         {
             if (startFlag)
             {
-                moveLine(gamespeed);
+                MoveLine(gamespeed);
                 enemyCars.CarMove(gamespeed);
                 enemyCars.HeartLost(myCar);
                 fuelObject.FuelMove(gamespeed);
                 fuelObject.RefilFuel(myCar);
                 fixCarObject.FixCarMove(gamespeed);
                 fixCarObject.FixCar(myCar);
-                checkGame();
+                CheckGame();
             }
         }
         private void Timer2_Tick(object sender, EventArgs e)
